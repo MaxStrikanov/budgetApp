@@ -20,22 +20,5 @@ const expensesAmount = document.querySelector('.expenses-amount');
 const targetAmount = document.querySelector('.target-amount ');
 const periodSelect = document.querySelector('.period-select');
 
-console.log(btnCalc);
-console.log(btnAddAmount);
-console.log(btnAddExpenses);
-console.log(budgetMonthValue);
-console.log(budgetDayValue);
-console.log(expensesMonthValue);
-console.log(additionalIncomeValue);
-console.log(additionalExpensesValue);
-console.log(incomePeriodValue);
-console.log(targetMonthValue);
-console.log(salaryAmount);
-console.log(incomeTitle);
-console.log(incomeAmount);
-console.log(expensesTitle);
-console.log(expensesAmount);
-console.log(targetAmount);
-console.log(periodSelect);
 
 
