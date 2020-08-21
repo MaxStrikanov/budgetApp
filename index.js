@@ -47,10 +47,13 @@ let appData = {
   expensesMonth: 0,
   budget: 0,
   start: () => {
-
+    
     if( salaryAmount.value === ''){
-        btnCalc.disabled
+        btnCalc.setAttribute("disabled", true);
         alert('Ошибка, поле "Месячный доход" должно быть заполнено!');
+        
+    }else {
+        btnCalc.setAttribute("disabled", false);
     }
 
     appData.budget = +salaryAmount.value;
@@ -80,7 +83,6 @@ let appData = {
     targetMonthValue.value = Math.ceil(appData.getTargetMonth());
     incomePeriodValue.value = appData.calcSavedMoney();
     periodSelect.addEventListener('input', appData.calcSavedMoney)
-
 
   },
   addExpensesBlock: () => {
@@ -200,14 +202,8 @@ changeRange: (e) => {
 btnCalc.addEventListener( 'click', appData.start );
 btnAddExpenses.addEventListener( 'click', appData.addExpensesBlock );
 btnAddAmount.addEventListener( 'click', appData.addIncomeBlock );
-periodSelect.addEventListener('input', appData.changeRange );
-console.log(periodSelect.addEventListener('input', appData.changeRange ));
-
-// console.log(appData);
-// appData.getInfoDeposit();
-
-// appData.addExpenses = addExpenses.charAt(0).toUppereCase().split('') + addExpenses.slice(1);
-// console.log(appData.addExpenses);
+periodSelect.addEventListener( 'input', appData.changeRange );
+periodSelect.addEventListener( 'input', appData.showResult );
 
 
 
