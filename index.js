@@ -33,6 +33,19 @@ const isString = (n) => {
   return n instanceof String
 }
 
+const validString = (str) =>{
+  const nameReg = /^[а-яА-Я]{1,20}$/;
+  return nameReg.test(str);
+};
+
+const validNumber = (str) => {
+  const nameReg = /^\d{1,}$/;
+  return nameReg.test(str)
+};
+
+// const validNamber = /^\d{1,}$/;
+// const validString = /^[а-я]{3,16}$/;
+
 let appData = {
   income: {},
   addIncome: [],
