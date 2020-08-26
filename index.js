@@ -241,7 +241,7 @@ btnCalc.addEventListener( 'click', appData.start.bind(appData));
 btnAddExpenses.addEventListener( 'click', appData.addExpensesBlock );
 btnAddAmount.addEventListener( 'click', appData.addIncomeBlock );
 periodSelect.addEventListener( 'input', appData.changeRange );
-periodSelect.addEventListener( 'input', appData.showResult );
+periodSelect.addEventListener( 'input', appData.showResult.bind(appData) );
 btnReset.addEventListener( 'click', appData.reset.bind(appData) );
 
 
