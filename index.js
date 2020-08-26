@@ -60,13 +60,13 @@ let appData = {
   start: function() {
     
     if( salaryAmount.value === ''){
-      this.setAttribute("disabled", "disabled");
+      btnCalc.setAttribute("disabled", "disabled");
       alert('Ошибка, поле "Месячный доход" должно быть заполнено!');
         
     }else {
       
-      this.removeAttribute("disabled");
-      this.style.display = 'none';
+      btnCalc.removeAttribute("disabled");
+      btnCalc.style.display = 'none';
       btnReset.style.display = 'block';
       leftColumn.forEach((el) => {
         el.setAttribute("disabled", "disabled");
@@ -74,26 +74,26 @@ let appData = {
        
     }
 
-    appData.budget = +salaryAmount.value;
+    this.budget = +salaryAmount.value;
     
-    appData.getExpenses();
-    appData.getIncome();
-    appData.getExpensesMonth();
-    appData.getAddExpenses();
-    appData.getAddIncome();
-    appData.getBudget();
-    appData.showResult();
+    this.getExpenses();
+    this.getIncome();
+    this.getExpensesMonth();
+    this.getAddExpenses();
+    this.getAddIncome();
+    this.getBudget();
+    this.showResult();
    
   },
   showResult: function() {
     budgetMonthValue.value = this.budgetMonth;
     budgetDayValue.value = this.budgetDay;
     expensesMonthValue.value = this.expensesMonth;
-    additionalExpensesValue.value = appData.addExpenses.join(', ')
-    additionalIncomeValue.value = appData.addIncome.join(', ');
-    targetMonthValue.value = Math.ceil(appData.getTargetMonth());
-    incomePeriodValue.value = appData.calcSavedMoney();
-    periodSelect.addEventListener('input', appData.calcSavedMoney)
+    additionalExpensesValue.value = this.addExpenses.join(', ')
+    additionalIncomeValue.value = this.addIncome.join(', ');
+    targetMonthValue.value = Math.ceil(this.getTargetMonth());
+    incomePeriodValue.value = this.calcSavedMoney();
+    periodSelect.addEventListener('input', this.calcSavedMoney)
 
   },
   addExpensesBlock: function() {
@@ -215,12 +215,12 @@ reset: () => {
 }
 };
 
-btnCalc.addEventListener( 'click', appData.start );
+btnCalc.addEventListener( 'click', appData.start.bind(appData));
 btnAddExpenses.addEventListener( 'click', appData.addExpensesBlock );
 btnAddAmount.addEventListener( 'click', appData.addIncomeBlock );
 periodSelect.addEventListener( 'input', appData.changeRange );
 periodSelect.addEventListener( 'input', appData.showResult );
-btnReset.addEventListener('click', appData.reset );
+btnReset.addEventListener('click', appData.reset.bind(appData) );
 
 
 
