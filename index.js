@@ -226,7 +226,18 @@ class AppData {
     this.budgetMonth = 0;
     this.expensesMonth = 0;
     this.budget = 0
-
+    
+    depositCheck.checked = false;
+    
+    depositBank.style.display = 'none';
+    depositAmount.style.display = 'none';
+    depositPercent.style.display = 'none';
+    depositBank.value = '';
+    depositAmount.value = '';
+    this.deposit = false;
+    depositBank.removeEventListener('change', this.changePersent);
+    console.log(depositCheck);
+    
   };
  
   changePersent() {
@@ -239,7 +250,7 @@ class AppData {
       depositPercent.value = ''
     
     } else {
-
+      depositPercent.style.display = 'none';
       depositPercent.value = valueSelect;
     }
     if ( depositPercent.value >= 0 && depositPercent.value <=100 ) {
@@ -248,8 +259,6 @@ class AppData {
       alert('Введите корректное значение в поле проценты')
       btnCalc.setAttribute("disabled", true);
     }
-  
-    console.log();
     
   };
   depositHendler() {
@@ -257,7 +266,7 @@ class AppData {
     if (depositCheck.checked) {
       depositBank.style.display = 'inline-block';
       depositAmount.style.display = 'inline-block';
-      this.deposit = true;
+    
       depositBank.addEventListener('change', this.changePersent);
 
     } else {
